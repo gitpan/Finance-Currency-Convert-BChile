@@ -12,11 +12,11 @@ between Chilean Pesos (CLP) and USA Dollars (USD).
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+$Finance::Currency::Convert::BChile::VERSION = '0.02';
 
 use LWP::UserAgent;
 use HTML::TokeParser;
