@@ -16,7 +16,7 @@ Version 0.02
 
 =cut
 
-$Finance::Currency::Convert::BChile::VERSION = '0.02';
+$Finance::Currency::Convert::BChile::VERSION = '0.03';
 
 use LWP::UserAgent;
 use HTML::TokeParser;
@@ -119,6 +119,7 @@ sub update {
 	}
 
 	return 0 unless $dolar and $fecha;
+    return 0 unless $dolar =~ /^\d+[,.]\d+$/;
 
 	$self->{'dolar'} = $dolar;
 	$self->{'fecha'} = $fecha;
@@ -166,6 +167,9 @@ sub rate {
 
 	# Changing decimal separator
 	$valor =~ s/,/./;
+
+    return -1 unless $valor;
+    return -1 unless $valor =~ /^\d+[,.]\d+$/;
 
 	return -1 unless $valor >= 0;
 
