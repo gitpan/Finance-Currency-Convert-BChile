@@ -1,5 +1,8 @@
 Revision history for Finance-Currency-Convert-BChile
 
+0.031   Tue Nov 27 09:21:45 CLST 2007
+        Fixed a bug in the tests.
+
 0.03    Mon Nov 26 17:26:06 CLST 2007
         Better error handling, mainly on weekend changes of bchile.cl
 
