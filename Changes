@@ -1,5 +1,8 @@
 Revision history for Finance-Currency-Convert-BChile
 
+0.032   Sat May 24 11:40:23 CLT 2008
+        Added the prerequisites in Makefile.PL, to pass automated tests.
+
 0.031   Tue Nov 27 09:21:45 CLST 2007
         Fixed a bug in the tests.
 
