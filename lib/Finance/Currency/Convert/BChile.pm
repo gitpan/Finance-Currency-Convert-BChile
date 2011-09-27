@@ -16,12 +16,12 @@ Version 0.032
 
 =cut
 
-$Finance::Currency::Convert::BChile::VERSION = '0.032';
+$Finance::Currency::Convert::BChile::VERSION = '0.04';
 
 use LWP::UserAgent;
 use HTML::TokeParser;
 
-my $BCENTRAL_URL = 'http://www.bcentral.cl/index.htm';
+my $BCENTRAL_URL = 'http://www.bcentral.cl/index.asp';
 my $DEFAULT_UA   = 'Finance::Currency::Convert::BChile perl module';
 
 =head1 SYNOPSIS
@@ -112,7 +112,7 @@ sub update {
 		$fecha = $p->get_text;
 
 		while (my $token2 = $p->get_tag("td")) {
-			next unless $p->get_text eq 'Dólar Observado';
+			next unless $p->get_text eq 'D?lar Observado';
 			$p->get_tag("td");
 			$dolar = $p->get_text;
 		}

@@ -1,8 +1,10 @@
 Changes
-MANIFEST
-Makefile.PL
-README
 lib/Finance/Currency/Convert/BChile.pm
+Makefile.PL
+MANIFEST
+META.yml			Module meta-data (added by MakeMaker)
+README
+SIGNATURE
 t/00-load.t
 t/01-object.t
 t/05-update.t
@@ -10,5 +12,3 @@ t/10-dollar.t
 t/15-date.t
 t/20-rate.t
 t/25-conversion.t
-META.yml                                 Module meta-data (added by MakeMaker)
-SIGNATURE
