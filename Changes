@@ -1,5 +1,9 @@
 Revision history for Finance-Currency-Convert-BChile
 
+0.05    Wed Jul 24 10:38:32 CLT 2013
+        Banco Central has changed its homepage. The numbers now are inside
+        a frame with different URL and layout.
+
 0.04    Mon Sep 26 21:47:44 CLST 2011
         Fixed URL change in bchile.cl page.
 

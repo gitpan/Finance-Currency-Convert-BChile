@@ -12,16 +12,18 @@ between Chilean Pesos (CLP) and USA Dollars (USD).
 
 =head1 VERSION
 
-Version 0.032
+Version 0.05
 
 =cut
 
-$Finance::Currency::Convert::BChile::VERSION = '0.04';
+$Finance::Currency::Convert::BChile::VERSION = '0.05';
 
 use LWP::UserAgent;
 use HTML::TokeParser;
 
-my $BCENTRAL_URL = 'http://www.bcentral.cl/index.asp';
+# As of 2013-07-24, bcentral.cl uses an iframe in homepage and
+# feeds values from another URL
+my $BCENTRAL_URL = 'http://si3.bcentral.cl/indicadoresvalores/secure/indicadoresvalores.aspx';
 my $DEFAULT_UA   = 'Finance::Currency::Convert::BChile perl module';
 
 =head1 SYNOPSIS
@@ -101,22 +103,25 @@ sub update {
 
 	my ($dolar, $fecha);
 
-	while (my $token = $p->get_tag("div")) {
-		next unless defined $token->[1]{'id'};
-		next unless $token->[1]{'id'} eq 'ind-dia';
+    while (my $token = $p->get_tag("div")) {
+        next unless $token->[1]{id} eq 'ind-dia';
 
-		while (my $token2 = $p->get_tag("p")) {
-			next unless $token2->[1]{class} eq 'published-date';
-			last;
-		}
-		$fecha = $p->get_text;
+        while (my $token2 = $p->get_tag("p")) {
+            next unless $token2->[1]{class} eq 'published-date';
+            last;
+        }
+        while (my $token2 = $p->get_tag("span")) {
+            next unless $token2->[1]{id} eq 'Lbl_fecha';
+            last;
+        }
+        $fecha = $p->get_text;
 
-		while (my $token2 = $p->get_tag("td")) {
-			next unless $p->get_text eq 'D?lar Observado';
-			$p->get_tag("td");
-			$dolar = $p->get_text;
-		}
-	}
+        while (my $token2 = $p->get_tag("span")) {
+            next unless $token2->[1]{id} eq 'RptListado_ctl03_lbl_valo';
+            $dolar = $p->get_text;
+            last;
+        }
+    }
 
 	return 0 unless $dolar and $fecha;
     return 0 unless $dolar =~ /^\d+[,.]{0,1}\d+$/;

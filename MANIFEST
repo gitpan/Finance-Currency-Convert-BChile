@@ -12,3 +12,4 @@ t/10-dollar.t
 t/15-date.t
 t/20-rate.t
 t/25-conversion.t
+META.json                                Module JSON meta-data (added by MakeMaker)
